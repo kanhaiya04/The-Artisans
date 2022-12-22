@@ -3,7 +3,7 @@ const bodyParser=require("body-parser");
 const ejs=require("ejs");
 
 const app=express();
-
+let port=process.env.PORT;
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -48,4 +48,6 @@ app.get("/contact",function(req,res){
   res.render('contact');
 });
 
-app.listen(3000);
+app.listen(port,()=>{
+  console.log(`APP is running at ${port} port`)
+});
